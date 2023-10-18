@@ -2,6 +2,7 @@ from django.shortcuts import render
 from mysite.models import Minji
 from django.http import HttpResponse
 from datetime import datetime
+from django.shortcuts import redirect
 # Create your views here.
 def homepage(request):
     minjis = Minji.objects.all()
@@ -9,9 +10,15 @@ def homepage(request):
     return render(request, 'index.html' , locals())
 
 def showminji(request,slug):
-    minji = Minji.objects.get(slug=slug) 
-    #select * from minji where slug=%slug
-    return render(request,'minji.html',locals())
+    try:
+        minji = Minji.objects.get(slug=slug) 
+        if minji != None:
+            return render(request,'minji.html',locals())
+        else:
+            return redirect("/")
+    except:
+        return redirect("/")
+        #select * from minji where slug=%slug
     
 
 '''

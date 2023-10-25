@@ -1,15 +1,28 @@
 <!-- index.html -->
 {% extends 'base2.html' %}
 {% block title %} welcome to my world {% endblock %}
-{% block headmessage %} 
-    <h3 style='font-family:標楷體;'>我真的覺得超讚 </a>
-{% endblock %}
+{% block headmessage %} <h3 style='font-family:標楷體;'>我真的覺得超讚 </a>{% endblock %}
 {% block content %} 
-    {% for minji in minjis %}
+{% for minji in minjis %}
+<div class='card'>
+    <div class='card-header'>
         <p style='font-family:微軟正黑體;font-size:14pt;font-weight:bold;'>
             <a href='/minji/{{minji.slug}}'>{{ minji.title }}</a>
         </p>
-    {% endfor %}
+    </div>
+    <div class='card-body' style='background-color:#ffffdd'>
+        <p>
+           {{ minji.body | truncatechars:40 }}
+        </p>
+    </div>
+    <div class='card-footer'  style='background-color:#efefef'>
+        <p>
+            發佈時間：{{ minji.pub_date | date:"Y M d, h:m:s"}}
+        </p>
+    </div>
+</div>
+<br>
+{% endfor %}
 {% endblock %}
 
 

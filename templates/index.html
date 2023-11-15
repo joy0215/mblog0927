@@ -4,10 +4,12 @@
 {% block headmessage %} <h3 style='font-family:標楷體;'>我真的覺得超讚 </a>{% endblock %}
 {% block content %} 
 {% for minji in minjis %}
+測試
+<a href="{% url 'minji-url' 2015 10 3 02 %}">show MINJI </a>
 <div class='card'>
     <div class='card-header'>
         <p style='font-family:微軟正黑體;font-size:14pt;font-weight:bold;'>
-            <a href='/minji/{{minji.slug}}'>{{ minji.title }}</a>
+            <a href='{ % url 'showminji' minji.slug % } '>{{ minji.title }}</a>
         </p>
     </div>
     <div class='card-body' style='background-color:#ffffdd'>

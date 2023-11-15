@@ -21,5 +21,8 @@ from mysite import views as mv
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',mv.homepage,name="homepage"),
-    path('minji/<slug:slug>',mv.showminji,name="showminji")
+    path('minji/<slug:slug>',mv.showminji,name="showminji"),    
+    path('about', mv.about),
+    path('about/<int:num>', mv.about),
+    path('minji/<int:yr>/<int:mon>/<int:day>/<int:minji_num>/' , mv.Minji , name="minji-url"),
 ]

@@ -1,11 +1,22 @@
 <!-- index.html -->
 {% extends 'base2.html' %}
 {% block title %} welcome to my world {% endblock %}
-{% block headmessage %} <h3 style='font-family:標楷體;'>我真的覺得超讚 </a>{% endblock %}
+{% block headmessage %} <h3 style='font-family:標楷體;'>我真的覺得超讚 </a>
+
+        hour:{{ hour }}    
+    {% if hour >= 13 %}
+    晚安
+    {% elif hour < 10 %}
+    早安
+    {% else %}
+    你好
+    {% endif %}
+
+{% endblock %}
 {% block content %} 
 {% for minji in minjis %}
-測試
-<a href="{% url 'minji-url' 2015 10 3 02 %}">show MINJI </a>
+
+
 <div class='card'>
     <div class='card-header'>
         <p style='font-family:微軟正黑體;font-size:14pt;font-weight:bold;'>
@@ -25,7 +36,8 @@
 </div>
 <br>
 {% endfor %}
-{% endblock %}
+{% endblock content %}
+
 
 
 

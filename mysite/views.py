@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 def homepage(request):
     minjis = Minji.objects.all()
     now = datetime.now()
+    hour = now.timetuple().tm_hour
     return render(request, 'index.html' , locals())
 
 def showminji(request, slug):
@@ -22,15 +23,33 @@ def showminji(request, slug):
 
 import random  
 def about(request, num=-1):
-    if num == -1 or num > 4:
-        quotes = ['今日事今日畢',
+    quotes = ['今日事今日畢',
                   '要怎麼收穫，先怎麼栽',
                   '知識就是力量',
                   '一個人的個性就是他的命運']
+    if num == -1 or num > 4:
         quotes = random.choice(quotes)
     else:
         quotes = quotes[num]
     return render(request,'about.html',locals()) 
+
+def carlist(request, maker=0):
+    car_maker = ['Ford', 'Honda', 'Mazda']
+    car_list = [
+        [{'model':'Fiesta', 'price': 203500},
+            {'model':'Focus','price': 605000}, 
+            {'model':'Mustang','price': 900000}],
+		[{'model':'Fit', 'price': 450000}, 
+		 {'model':'City', 'price': 150000}, 
+		 {'model':'NSX', 'price':1200000}],
+		[{'model':'Mazda3', 'price': 329999}, 
+		 {'model':'Mazda5', 'price': 603000},
+		 {'model':'Mazda6', 'price':850000}],]
+
+    maker = maker
+    maker_name =  car_maker[maker]
+    cars = car_list[maker]
+    return render(request, 'carlist.html', locals())
 
 
 '''

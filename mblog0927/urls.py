@@ -25,4 +25,7 @@ urlpatterns = [
     path('about', mv.about),
     path('about/<int:num>', mv.about),
     path('minji/<int:yr>/<int:mon>/<int:day>/<int:minji_num>/' , mv.Minji , name="minji-url"),
+    path('carlist/', mv.carlist),
+    path('carlist/<int:maker>/', mv.carlist, name='carlist-url'),
+
 ]
